@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             IBookManager bookManager = IBookManager.Stub.asInterface(iBinder);
-
+            mRemoteBookManager = bookManager;
             try {
                 List<Book> list = bookManager.getNookList();
                 Log.e("=======","===query book list , list type:"+list.getClass().getCanonicalName());
@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
 
 
         unbindService(mConnection);
